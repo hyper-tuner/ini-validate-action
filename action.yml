@@ -1,0 +1,24 @@
+name: HyperTuner INI validate
+description: GitHub Action for INI validation.
+author: Piotr Rogowski <piotr.rogowski0@gmail.com>
+branding:
+  icon: cpu
+  color: blue
+inputs:
+  github-token:
+    description: GitHub token.
+    required: true
+  filename:
+    description: Path to INI file.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Validate
+      shell: bash
+      run: |
+        NPM_GITHUB_TOKEN=${{ inputs.github-token }}
+        echo -e "@hyper-tuner:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${NPM_GITHUB_TOKEN}" > .npmrc
+        npm i -g npm@8.15.1
+        npx -y hyper-tuner/ini validate ${{ inputs.filename }}

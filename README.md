@@ -13,7 +13,7 @@ on: pull_request
 
 jobs:
   validate:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout

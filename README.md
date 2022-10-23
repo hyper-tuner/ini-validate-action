@@ -1,6 +1,6 @@
 # HyperTuner INI validate
 
-GitHub Action for INI validation.
+GitHub Action for INI validation (https://github.com/hyper-tuner/ini).
 
 ## Usage
 

@@ -16,9 +16,11 @@ runs:
   using: composite
   steps:
     - name: Validate
-      shell: bash
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
       run: |
         NPM_GITHUB_TOKEN=${{ inputs.github-token }}
         echo -e "@hyper-tuner:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${NPM_GITHUB_TOKEN}" > .npmrc
-        npm i -g npm@8.15.1
         npx -y hyper-tuner/ini validate ${{ inputs.filename }}
